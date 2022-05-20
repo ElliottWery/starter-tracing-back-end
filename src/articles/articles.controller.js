@@ -31,10 +31,14 @@ async function create(req, res) {
 }
 
 async function list(req, res) {
+  const methodName = "list";
+  console.log("Hello World 2");
+  req.log.debug({ __filename, methodName });
   const data = await service.list();
   res.json({
     data,
   });
+  req.log.trace({ __filename, methodName, return: true, data });
 }
 
 module.exports = {
